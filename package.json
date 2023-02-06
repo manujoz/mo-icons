@@ -1,0 +1,22 @@
+{
+    "name": "mo-icon",
+    "version": "1.0.0",
+    "author": {
+        "name": "Manu Overa",
+        "email": "manu.overa@gmail.com"
+    },
+    "license": "MIT",
+    "description": "Material Icons Manu Overa component",
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "scripts": {
+        "relist": "node util/relist-icons.js",
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "devDependencies": {
+        "vite": "^4.1.1"
+    }
+}
