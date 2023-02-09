@@ -52,7 +52,23 @@ export class MoIcon extends LitElement {
     }
 
     async loadIcon() {
-        const { default: icons } = await import(`./icons/${this.mode}.js`);
+        let icons = null;
+        if (this.mode === "filled") {
+            const module = await import(`./icons/filled.js`);
+            icons = module.default;
+        } else if (this.mode === "outlined") {
+            const module = await import(`./icons/outlined.js`);
+            icons = module.default;
+        } else if (this.mode === "round") {
+            const module = await import(`./icons/round.js`);
+            icons = module.default;
+        } else if (this.mode === "sharp") {
+            const module = await import(`./icons/sharp.js`);
+            icons = module.default;
+        } else if (this.mode === "two-tone") {
+            const module = await import(`./icons/two-tone.js`);
+            icons = module.default;
+        }
 
         let svg = icons[this.icon];
         if (!svg) {
