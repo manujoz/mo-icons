@@ -7,6 +7,8 @@
         "dev": "vite",
         "build": "vite build"
     },
+    "main": "mo-icons.js",
+    "types": "mo-icons.d.ts",
     "author": {
         "name": "Manu Overa",
         "email": "manu.overa@gmail.com"
