@@ -1,11 +1,5 @@
 import { LitElement, html, css } from "lit";
 
-import RoundIcons from "./icons/round";
-import FilledIcons from "./icons/filled";
-import OutlinedIcons from "./icons/outlined";
-import TwoTonesIcons from "./icons/two-tone";
-import SharpIcons from "./icons/sharp";
-
 export class MoIcon extends LitElement {
     static styles = [
         css`
@@ -57,17 +51,8 @@ export class MoIcon extends LitElement {
         }
     }
 
-    loadIcon() {
-        let icons = RoundIcons;
-        if (this.mode === "filled") {
-            icons = FilledIcons;
-        } else if (this.mode === "outlined") {
-            icons = OutlinedIcons;
-        } else if (this.mode === "two-tone") {
-            icons = TwoTonesIcons;
-        } else if (this.mode === "sharp") {
-            icons = SharpIcons;
-        }
+    async loadIcon() {
+        const { default: icons } = await import(`./icons/${this.mode}.js`);
 
         let svg = icons[this.icon];
         if (!svg) {
