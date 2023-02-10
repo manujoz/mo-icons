@@ -26,10 +26,10 @@ export class MoIcon extends LitElement {
     constructor() {
         super();
 
-        this.icon = "";
-        this.src = "";
+        this.icon = ``;
+        this.src = ``;
         /** @type {"round" | "filled" | "outlined" | "two-tone" | "sharp"} */
-        this.mode = "round";
+        this.mode = `round`;
     }
 
     render() {
@@ -37,8 +37,8 @@ export class MoIcon extends LitElement {
     }
 
     updated() {
-        const div = this.shadowRoot.querySelector("div");
-        div.textContent = "";
+        const div = this.shadowRoot.querySelector(`div`);
+        div.textContent = ``;
 
         if (!this.icon && !this.src) {
             return;
@@ -53,32 +53,31 @@ export class MoIcon extends LitElement {
 
     async loadIcon() {
         let icons = null;
-        if (this.mode === "filled") {
+        if (this.mode === `filled`) {
             const module = await import(`./icons/filled.js`);
             icons = module.default;
-        } else if (this.mode === "outlined") {
+        } else if (this.mode === `outlined`) {
             const module = await import(`./icons/outlined.js`);
             icons = module.default;
-        } else if (this.mode === "round") {
+        } else if (this.mode === `round`) {
             const module = await import(`./icons/round.js`);
             icons = module.default;
-        } else if (this.mode === "sharp") {
+        } else if (this.mode === `sharp`) {
             const module = await import(`./icons/sharp.js`);
             icons = module.default;
-        } else if (this.mode === "two-tone") {
+        } else if (this.mode === `two-tone`) {
             const module = await import(`./icons/two-tone.js`);
             icons = module.default;
         }
 
         let svg = icons[this.icon];
         if (!svg) {
-            throw Error("Icon " + this.icon + " not found");
+            throw Error(`Icon ` + this.icon + ` not found`);
         }
 
-        const w = this.offsetWidth;
-        svg = svg.replace(`width="24"`, `width="${w}"`);
-        svg = svg.replace(`height="24"`, `height="${w}"`);
-        const div = this.shadowRoot.querySelector("div");
+        svg = svg.replace(`width="24"`, ``);
+        svg = svg.replace(`height="24"`, ``);
+        const div = this.shadowRoot.querySelector(`div`);
         div.innerHTML = svg;
     }
 
@@ -100,7 +99,7 @@ export class MoIcon extends LitElement {
                 const w = this.offsetWidth;
                 svg = svg.replace(`width="24"`, `width="${w}"`);
                 svg = svg.replace(`height="24"`, `height="${w}"`);
-                const div = this.shadowRoot.querySelector("div");
+                const div = this.shadowRoot.querySelector(`div`);
                 div.innerHTML = svg;
             })
             .catch((err) => {
@@ -109,4 +108,4 @@ export class MoIcon extends LitElement {
     }
 }
 
-customElements.define("mo-icon", MoIcon);
+customElements.define(`mo-icon`, MoIcon);
